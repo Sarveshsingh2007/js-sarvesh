@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: #212121;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .card{
+            height: 800px;
+            width: 800px;
+            background-color: #323232;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .name button{
+            background-color: rgb(183, 129, 129);
+            padding: 30px;
+            font-size: 20px;
+        }
+        .photo button{
+            background-color: rgb(183, 129, 129);
+            padding: 30px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="name">
+            <button>Name</button>
+        </div>
+        <div class="photo">
+            <button>Photo</button>
+        </div>
+    </div>
+</body>
+<script>
+
+    const card =  document.querySelector('card')
+    const name =  document.querySelector('name')
+    const photo =  document.querySelector('photo')
+
+
+
+    const requestUrl = "https://api.github.com/users/Sarveshsingh2007"
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', requestUrl)
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState)
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data)
+            console.log(data.name)
+            console.log(data.avatar_url)
+            console.log(data.bio)
+        }
+    }
+    xhr.send()
+</script>
+</html>
